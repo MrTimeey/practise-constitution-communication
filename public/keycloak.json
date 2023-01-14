@@ -1,0 +1,7 @@
+{
+  "realm": "uesen",
+  "auth-server-url": "https://sso.mrtimeey.de/auth/",
+  "ssl-required": "external",
+  "resource": "pcc-client",
+  "public-client": true
+}

@@ -4,6 +4,7 @@
     "plugin:vue/vue3-essential",
     "eslint:recommended",
     "plugin:prettier/recommended",
+    "@vue/eslint-config-typescript",
     "eslint-config-prettier",
     "prettier"
   ],

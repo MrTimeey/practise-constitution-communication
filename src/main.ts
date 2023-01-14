@@ -5,10 +5,14 @@ import App from './App.vue';
 import router from './router';
 
 import './assets/main.css';
+import KeycloakService from '@/security/KeycloakService';
 
-const app = createApp(App);
+const renderApp = () => {
+    const app = createApp(App);
+    app.use(createPinia());
+    app.use(router);
 
-app.use(createPinia());
-app.use(router);
+    app.mount('#app');
+};
 
-app.mount('#app');
+KeycloakService.login(renderApp);
