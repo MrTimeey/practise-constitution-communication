@@ -7,11 +7,11 @@ import router from './router';
 import './assets/main.css';
 import KeycloakService from '@/security/KeycloakService';
 
-const renderApp = () => {
-    const app = createApp(App);
-    app.use(createPinia());
-    app.use(router);
+const app = createApp(App);
+app.use(createPinia());
 
+const renderApp = () => {
+    app.use(router);
     app.mount('#app');
 };
 

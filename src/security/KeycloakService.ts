@@ -1,21 +1,22 @@
 import Keycloak from 'keycloak-js';
+import { useUserStore } from '@/stores/user';
 
-// @ts-ignore
-const keycloakInstance: Keycloak.KeycloakInstance = new Keycloak();
+const keycloakInstance: Keycloak.KeycloakInstance = Keycloak();
 
-interface CallbackOneParam<T1 = void, T2 = void> {
-    (param1: T1): T2;
-}
-/**
- * Initializes Keycloak instance and calls the provided callback function if successfully authenticated.
- *
- * @param onAuthenticatedCallback
- */
-const login = (onAuthenticatedCallback: CallbackOneParam) => {
+const login = (onAuthenticatedCallback: Function) => {
     keycloakInstance
         .init({ onLoad: 'login-required' })
         .then(function (authenticated: boolean) {
-            authenticated ? onAuthenticatedCallback() : alert('non authenticated');
+            if (!authenticated) {
+                alert('non authenticated');
+                return;
+            }
+            const userStore = useUserStore();
+            userStore.token = keycloakInstance.token ? keycloakInstance.token : '';
+            userStore.parsedToken = keycloakInstance.tokenParsed ? keycloakInstance.tokenParsed : {};
+            console.log(keycloakInstance.tokenParsed);
+            console.log(userStore.roles, userStore.isPlayer);
+            onAuthenticatedCallback();
         })
         .catch((e: any) => {
             console.log(`keycloak init exception: ${e}`);

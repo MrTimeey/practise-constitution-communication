@@ -17,7 +17,6 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@types/keycloak-js": "^3.4.1",
     "@types/node": "^18.11.12",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-prettier": "^7.0.0",
