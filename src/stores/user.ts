@@ -13,7 +13,6 @@ export const useUserStore = defineStore({
         },
         roles: (state) => {
             const resourceAccess = state.parsedToken?.resource_access;
-            console.log(resourceAccess);
             if (!resourceAccess) {
                 return [];
             }

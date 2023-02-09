@@ -14,8 +14,6 @@ const login = (onAuthenticatedCallback: Function) => {
             const userStore = useUserStore();
             userStore.token = keycloakInstance.token ? keycloakInstance.token : '';
             userStore.parsedToken = keycloakInstance.tokenParsed ? keycloakInstance.tokenParsed : {};
-            console.log(keycloakInstance.tokenParsed);
-            console.log(userStore.roles, userStore.isPlayer);
             onAuthenticatedCallback();
         })
         .catch((e: any) => {
